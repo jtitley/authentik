@@ -21,7 +21,21 @@ The following placeholders will be used:
 -   `sonarr.company` is the FQDN of the Sonarr install.
 -   `authentik.company` is the FQDN of the authentik install.
 
+in Sonarr, navigate to Settings/General
+
+-  Authentication
+
+   Set to Basic (Browser Popup) so that automatic crendentials can be passed to Sonarr.
+
 Create a Proxy Provider with the following values
+
+-   Authentication Flow
+
+    default-authentication-flow (Welcome to authentik!)
+    
+-   Authorization Flow
+
+    default-provider-authorization-implicit-consent (Authorize Application)
 
 -   Internal host
 
@@ -31,7 +45,23 @@ Create a Proxy Provider with the following values
 
 -   External host
 
-    Set this to the external URL you will be accessing Sonarr from.
+    Set this to the external URL you will be accessing Sonarr from. (e.g. https://sonarr.company)
+
+-   Authentication Settings / Intercept header authentication
+
+    Set this so that when navigating to https://sonarr.company will force authentication if the user has not already done so
+
+-   Authentication Settings / Send HTTP-Basic Authentication
+
+    Set this so that credentials can be sent to Sonarr
+
+-   HTTP-Basic Username Key
+
+    Set this to sonarr_user
+
+-   HTTP-Basic Password Key
+
+    Set this to sonarr_password
 
 Create an application in authentik and select the provider you've created above.
 
